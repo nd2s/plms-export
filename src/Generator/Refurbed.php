@@ -84,19 +84,19 @@ class Refurbed extends CSVPluginGenerator
 			$this->buildRow($settings, $fuck);
 		}
 	
-		if(!($elasticSearch instanceof VariationElasticSearchScrollRepositoryContract)) {
+		/*if(!($elasticSearch instanceof VariationElasticSearchScrollRepositoryContract)) {
 			$this->getLogger(__METHOD__)->error(
 				'Refurbed::instance',
 				['msg' => "not an instance"]);
-		}
+		}*/
 
 		do {
 			// Get the data from Elastic Search
 			$resultList = $elasticSearch->execute();
 			
-			$this->getLogger(__METHOD__)->error(
+			$this->getLogger(__METHOD__)->info(
 				'Refurbed::afterExecute',
-				['data' => $resultList]);
+				['msg'=>'received stuf', 'data'=>$resultList]);
 			
 			if(count($resultList['error']) > 0) {
 				$this->getLogger(__METHOD__)->error(
