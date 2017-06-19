@@ -72,6 +72,18 @@ class Refurbed extends CSVPluginGenerator
 		$this->setDelimiter(self::DELIMITER);
 		$this->addCSVContent(self::HEAD);
 
+		
+		$fucks = [
+			["sku"=>"fuck", "name"=>"fuck", "price"=>234, "stock"=>4],
+			["sku"=>"wed", "name"=>"werg", "price"=>12, "stock"=>1],
+			["sku"=>"ewrg", "name"=>"sadc", "price"=>93, "stock"=>17],
+		]
+		
+		foreach($fucks as $fuck) {
+			$this->buildRow($settings, $fuck);
+		}
+		return;
+	
 		if(!($elasticSearch instanceof VariationElasticSearchScrollRepositoryContract)) {
 			return;
 		}
@@ -114,7 +126,7 @@ class Refurbed extends CSVPluginGenerator
 			['Data row duration' => 'Row printing start']);
 		
 		$data = [
-			'sku' => $variation['skus.sku'],
+			'sku' => $variation['sku'],
 			'name' => $variation['name'],
 			'price' => $variation['price'],
 			'stock' => $variation['stock'],
