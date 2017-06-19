@@ -32,7 +32,7 @@ class Refurbed extends ResultFields
 				//item
 				'item.id',
 				'item.manufacturer.id',
-				'item.amazonFedas',
+
 
 				//variation
 				'id',

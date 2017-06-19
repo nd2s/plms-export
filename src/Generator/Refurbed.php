@@ -82,7 +82,7 @@ class Refurbed extends CSVPluginGenerator
 		foreach($fucks as $fuck) {
 			$this->buildRow($settings, $fuck);
 		}
-		return;
+		//return;
 	
 		if(!($elasticSearch instanceof VariationElasticSearchScrollRepositoryContract)) {
 			return;
