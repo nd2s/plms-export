@@ -24,7 +24,7 @@ class Refurbed extends ResultFields
 		//$settings = $this->arrayHelper->buildMapFromObjectList($formatSettings, 'key', 'value');
 
 		//$reference = $settings->get('referrerId') ? $settings->get('referrerId') : self::IDEALO_DE;
-		$this->setOrderByList(['skus.sku', ElasticSearch::SORTING_ORDER_ASC]);
+		$this->setOrderByList(['item.id', ElasticSearch::SORTING_ORDER_ASC]);
 
 		$fields = [
 			[
