@@ -86,6 +86,7 @@ class Refurbed extends CSVPluginGenerator
 		}
 	
 		if(!($elasticSearch instanceof VariationElasticSearchScrollRepositoryContract)) {
+			throw new Exception("not an instance");
 			return;
 		}
 
