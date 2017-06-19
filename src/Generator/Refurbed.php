@@ -72,7 +72,9 @@ class Refurbed extends CSVPluginGenerator
 		$this->setDelimiter(self::DELIMITER);
 		$this->addCSVContent(self::HEAD);
 
-		
+		$this->getLogger(__METHOD__)->error(
+			'Refurbed::fucks',
+			['Message' => "doing stuff"]);
 		$fucks = [
 			["sku"=>"fuck", "name"=>"fuck", "price"=>234, "stock"=>4],
 			["sku"=>"wed", "name"=>"werg", "price"=>12, "stock"=>1],
@@ -82,7 +84,6 @@ class Refurbed extends CSVPluginGenerator
 		foreach($fucks as $fuck) {
 			$this->buildRow($settings, $fuck);
 		}
-		//return;
 	
 		if(!($elasticSearch instanceof VariationElasticSearchScrollRepositoryContract)) {
 			return;
