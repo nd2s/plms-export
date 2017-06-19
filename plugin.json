@@ -1,0 +1,25 @@
+{
+	"name": "Refurbed",
+	"description": "This plugin adds the format Refurbed to the Elastic Export.",
+	"namespace": "Refurbed",
+	"author": "",
+	"type": "export",
+	"serviceProvider": "Refurbed\\RefurbedServiceProvider",
+	"license": "BSD3",
+	"price": 0.00,
+	"shortDescription": {
+		"de": "Dieses Plugin fügt das Datenformat Refurbed zum Elastischen Export hinzu.",
+		"en": "This plugin adds the format Refurbed to the Elastic Export."
+	},
+	"categories": [
+		"3523"
+	],
+	"version": "0.1.0-pre",
+	"marketplaceName": {
+		"de":"refurbed",
+		"en":"refurbed"
+	},
+	"dependencies": {
+		"ElasticExport": ">=1.0.15"
+	}
+}
