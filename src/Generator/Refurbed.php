@@ -94,7 +94,7 @@ class Refurbed extends CSVPluginGenerator
 			
 			if(count($resultList['error']) > 0) {
 				$this->getLogger(__METHOD__)->error(
-					'ElasticExportIdealoDE::item.occurredElasticSearchErrors',
+					'Refurbed::item.occurredElasticSearchErrors',
 					['Error message' => $resultList['error']]);
 				break;
 			}
@@ -122,7 +122,7 @@ class Refurbed extends CSVPluginGenerator
 	 */
 	private function buildRow(KeyValue $settings, $variation) {
 		$this->getLogger(__METHOD__)->debug(
-			'ElasticExportIdealoDE::item.itemExportConstructGroup',
+			'Refurbed::item.itemExportConstructGroup',
 			['Data row duration' => 'Row printing start']);
 		
 		$data = [
