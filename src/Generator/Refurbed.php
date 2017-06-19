@@ -1,14 +1,14 @@
 <?php
 namespace Refurbed\Generator;
 
-use ElasticExport\Helper\ElasticExportCoreHelper;
+//use ElasticExport\Helper\ElasticExportCoreHelper;
 use Plenty\Modules\DataExchange\Contracts\CSVPluginGenerator;
 use Plenty\Modules\Helper\Services\ArrayHelper;
 use Plenty\Modules\DataExchange\Models\FormatSetting;
 use Plenty\Modules\Helper\Models\KeyValue;
 use Plenty\Modules\Item\Search\Contracts\VariationElasticSearchScrollRepositoryContract;
 use Plenty\Plugin\Log\Loggable;
-use ElasticExport\Helper\ElasticExportStockHelper;
+//use ElasticExport\Helper\ElasticExportStockHelper;
 //use Refurbed\Helper\PriceHelper;
 //use Refurbed\Helper\PropertyHelper;
 //use Refurbed\Helper\StockHelper;
@@ -21,7 +21,7 @@ class Refurbed extends CSVPluginGenerator
 
 	const HEAD = ['sku', 'name', 'price', 'stock'];
 
-	private $elasticExportCoreHelper;
+	//private $elasticExportCoreHelper;
 
 	private $arrayHelper;
 
@@ -33,7 +33,7 @@ class Refurbed extends CSVPluginGenerator
 
 	private $defaultShippingList = [];
 
-	private $elasticExportStockHelper;
+	//private $elasticExportStockHelper;
 
 
 	/**
@@ -64,8 +64,8 @@ class Refurbed extends CSVPluginGenerator
 	protected function generatePluginContent($elasticSearch,
 		array $formatSettings = [], array $filter = [])
 	{
-		$this->elasticExportStockHelper = pluginApp(ElasticExportStockHelper::class);
-		$this->elasticExportCoreHelper = pluginApp(ElasticExportCoreHelper::class);
+		//$this->elasticExportStockHelper = pluginApp(ElasticExportStockHelper::class);
+		//$this->elasticExportCoreHelper = pluginApp(ElasticExportCoreHelper::class);
 
 		$settings = $this->arrayHelper->buildMapFromObjectList($formatSettings, 'key', 'value');
 
