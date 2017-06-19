@@ -94,7 +94,7 @@ class Refurbed extends CSVPluginGenerator
 			// Get the data from Elastic Search
 			$resultList = $elasticSearch->execute();
 			
-			$this->getLogger(__METHOD__)->info(
+			$this->getLogger(__METHOD__)->error(
 				'Refurbed::afterExecute',
 				['msg'=>'received stuf', 'data'=>$resultList]);
 			
@@ -108,7 +108,7 @@ class Refurbed extends CSVPluginGenerator
 			if(!is_array($resultList['documents'])
 				|| count($resultList['documents']) == 0) {
 				
-				$this->getLogger(__METHOD__)->debug(
+				$this->getLogger(__METHOD__)->error(
 					'Refurbed::404',
 					['msg' => 'no documents returned']);
 				break;
