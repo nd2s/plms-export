@@ -85,7 +85,9 @@ class Refurbed extends CSVPluginGenerator
 		}
 	
 		if(!($elasticSearch instanceof VariationElasticSearchScrollRepositoryContract)) {
-			return;
+			$this->getLogger(__METHOD__)->debug(
+				'Refurbed::instance',
+				['msg' => "not an instance"]);
 		}
 
 		do {
@@ -93,8 +95,8 @@ class Refurbed extends CSVPluginGenerator
 			$resultList = $elasticSearch->execute();
 			
 			$this->getLogger(__METHOD__)->debug(
-					'Refurbed::afterExecute',
-					['data' => $resultList]);
+				'Refurbed::afterExecute',
+				['data' => $resultList]);
 			
 			if(count($resultList['error']) > 0) {
 				$this->getLogger(__METHOD__)->error(
