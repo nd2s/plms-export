@@ -102,6 +102,9 @@ class Refurbed extends CSVPluginGenerator
 			if(!is_array($resultList['documents'])
 				|| count($resultList['documents']) == 0) {
 				
+				$this->getLogger(__METHOD__)->debug(
+					'Refurbed::404',
+					['msg' => 'no documents returned']);
 				break;
 			}
 		
