@@ -114,10 +114,10 @@ class Refurbed extends CSVPluginGenerator
 			['Data row duration' => 'Row printing start']);
 		
 		$data = [
-			'sku' => '3d',
-			'name' => '5g',
-			'price' => '3f',
-			'stock' => '8c',
+			'sku' => $variation['skus.sku'],
+			'name' => $variation['name'],
+			'price' => $variation['price'],
+			'stock' => $variation['stock'],
 		];
 		$this->addCSVContent(array_values($data));
 	}
