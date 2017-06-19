@@ -68,7 +68,7 @@ class Refurbed extends CSVPluginGenerator
 		$settings = $this->arrayHelper->buildMapFromObjectList($formatSettings, 'key', 'value');
 
 		$this->setDelimiter(self::DELIMITER);
-		//$this->addCSVContent($this->head());
+		$this->addCSVContent($this->head());
 		$this->addCSVContent(array('fuck', 'fuck', '234', '4'));
 
 		$this->getLogger(__METHOD__)->error(
@@ -78,7 +78,7 @@ class Refurbed extends CSVPluginGenerator
 			["sku"=>"fuck", "name"=>"fuck", "price"=>234, "stock"=>4],
 			["sku"=>"wed", "name"=>"werg", "price"=>12, "stock"=>1],
 			["sku"=>"ewrg", "name"=>"sadc", "price"=>93, "stock"=>17],
-		]
+		];
 		
 		foreach($fucks as $fuck) {
 			$this->buildRow($settings, $fuck);
