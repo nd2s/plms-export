@@ -71,7 +71,7 @@ class Refurbed extends CSVPluginGenerator
 
 		$this->setDelimiter(self::DELIMITER);
 		$this->addCSVContent(self::HEAD);
-		$this->addCSVContent(['fuck', 'fuck', '234', '4']);
+		$this->addCSVContent(array('fuck', 'fuck', '234', '4'));
 
 		$this->getLogger(__METHOD__)->error(
 			'Refurbed::fucks',
