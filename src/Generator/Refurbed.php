@@ -19,8 +19,6 @@ class Refurbed extends CSVPluginGenerator
 
 	const DELIMITER = ";";
 
-	const HEAD = ['sku', 'name', 'price', 'stock'];
-
 	//private $elasticExportCoreHelper;
 
 	private $arrayHelper;
@@ -70,7 +68,7 @@ class Refurbed extends CSVPluginGenerator
 		$settings = $this->arrayHelper->buildMapFromObjectList($formatSettings, 'key', 'value');
 
 		$this->setDelimiter(self::DELIMITER);
-		$this->addCSVContent(self::HEAD);
+		//$this->addCSVContent($this->head());
 		$this->addCSVContent(array('fuck', 'fuck', '234', '4'));
 
 		$this->getLogger(__METHOD__)->error(
@@ -135,5 +133,10 @@ class Refurbed extends CSVPluginGenerator
 			'stock' => $variation['stock'],
 		];
 		$this->addCSVContent(array_values($data));
+	}
+	
+	private function head():array
+	{
+		return array('sku', 'name', 'price', 'stock');
 	}
 }
