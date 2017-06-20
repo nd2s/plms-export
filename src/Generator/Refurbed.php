@@ -40,7 +40,7 @@ class Refurbed extends CSVGenerator
 		
 		$this->setDelimiter(';');
 		$this->addCSVContent([
-			'refurbed_id',
+			'sku',
 			'internal_id',
 			'stock_net',
 			'currency',
@@ -57,7 +57,7 @@ class Refurbed extends CSVGenerator
 			//$url = $record->itemDescription->urlContent;
 	
 			$data = [
-				'refurbed_id' => $intlId,
+				'sku' => $intlId,
 				'internal_id' => $intlId,
 				'stock_net' => $stockNet ?: 0,
 				'currency' => $currency,
