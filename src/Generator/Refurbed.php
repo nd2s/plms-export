@@ -40,7 +40,8 @@ class Refurbed extends CSVGenerator
 		
 		$this->setDelimiter(';');
 		$this->addCSVContent([
-			'refurbed_sku',
+			'refurbed_id',
+			'internal_id',
 			'stock_net',
 			'currency',
 			'price_gross',
