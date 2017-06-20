@@ -17,7 +17,7 @@ class RefurbedServiceProvider extends DataExchangeServiceProvider
 	public function exports(ExportPresetContainer $container)
 	{
 		$container->add(
-			'Refurbed-Plugin',
+			'Refurbed',
 			'Refurbed\ResultField\Refurbed',
 			'Refurbed\Generator\Refurbed',
 			'', // filterClass

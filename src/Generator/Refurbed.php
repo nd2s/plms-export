@@ -1,150 +1,55 @@
 <?php
 namespace Refurbed\Generator;
 
-//use ElasticExport\Helper\ElasticExportCoreHelper;
-use Plenty\Modules\DataExchange\Contracts\CSVPluginGenerator;
+use ElasticExport\Helper\ElasticExportHelper;
+use Plenty\Modules\DataExchange\Contracts\CSVGenerator;
 use Plenty\Modules\Helper\Services\ArrayHelper;
-use Plenty\Modules\DataExchange\Models\FormatSetting;
 use Plenty\Modules\Helper\Models\KeyValue;
-use Plenty\Modules\Item\Search\Contracts\VariationElasticSearchScrollRepositoryContract;
-use Plenty\Plugin\Log\Loggable;
-//use ElasticExport\Helper\ElasticExportStockHelper;
-//use Refurbed\Helper\PriceHelper;
-//use Refurbed\Helper\PropertyHelper;
-//use Refurbed\Helper\StockHelper;
+use Plenty\Modules\Item\DataLayer\Models\Record;
+use Plenty\Modules\Item\DataLayer\Models\RecordList;
+use Plenty\Modules\DataExchange\Models\FormatSetting;
 
-class Refurbed extends CSVPluginGenerator
+class Refurbed extends CSVGenerator
 {
 	use Loggable;
 
 	const DELIMITER = ";";
 
-	//private $elasticExportCoreHelper;
-
+	private $elasticExportHelper;
+	
 	private $arrayHelper;
-
-	//private $priceHelper;
-
-	//private $propertyHelper;
-
-	//private $stockHelper;
 
 	private $defaultShippingList = [];
 
-	//private $elasticExportStockHelper;
 
-
-	/**
-	 * Refurbed constructor.
-	 *
-	 * @param ArrayHelper $arrayHelper
-	 * @param PriceHelper $priceHelper
-	 * @param PropertyHelper $propertyHelper
-	 * @param StockHelper $stockHelper
-	 */
-	public function __construct(ArrayHelper $arrayHelper)
+	public function __construct(ElasticExportHelper $elasticExportHelper,
+		ArrayHelper $arrayHelper)
 	{
-		//	PriceHelper $priceHelper, PropertyHelper $propertyHelper,
-		//	StockHelper $stockHelper)
+		$this->elasticExportHelper = $elasticExportHelper;
 		$this->arrayHelper = $arrayHelper;
-		//$this->priceHelper = $priceHelper;u
-		//$this->propertyHelper = $propertyHelper;
-		//$this->stockHelper = $stockHelper;
 	}
 
-	/**
-	 * Generates and populates the data into the CSV file.
-	 *
-	 * @param VariationElasticSearchScrollRepositoryContract $elasticSearch
-	 * @param array $formatSettings
-	 * @param array $filter
-	 */
-	protected function generatePluginContent($elasticSearch,
-		array $formatSettings = [], array $filter = [])
+	protected function generateContent($resultData, array $formatSettings = [])
 	{
-		//$this->elasticExportStockHelper = pluginApp(ElasticExportStockHelper::class);
-		//$this->elasticExportCoreHelper = pluginApp(ElasticExportCoreHelper::class);
-
-		$settings = $this->arrayHelper->buildMapFromObjectList($formatSettings, 'key', 'value');
-
-		$this->setDelimiter(self::DELIMITER);
-		$this->addCSVContent($this->head());
-		$this->addCSVContent(array('fuck', 'fuck', '234', '4'));
-
-		$this->getLogger(__METHOD__)->error(
-			'Refurbed::fucks',
-			['Message' => "doing stuff"]);
-		$fucks = [
-			["sku"=>"fuck", "name"=>"fuck", "price"=>234, "stock"=>4],
-			["sku"=>"wed", "name"=>"werg", "price"=>12, "stock"=>1],
-			["sku"=>"ewrg", "name"=>"sadc", "price"=>93, "stock"=>17],
-		];
-		
-		foreach($fucks as $fuck) {
-			$this->buildRow($settings, $fuck);
+		if(!($resultData instanceof RecordList)) {
+			$this->getLogger(__METHOD__)->error(
+				'Refurbed::instanceOf',
+				['error' => 'not an instance of RecordList']);
+			return;
 		}
-	
-		/*if(!($elasticSearch instanceof VariationElasticSearchScrollRepositoryContract)) {
-			$this->getLogger(__METHOD__)->error(
-				'Refurbed::instance',
-				['msg' => "not an instance"]);
-		}*/
-
-		do {
-			// Get the data from Elastic Search
-			$resultList = $elasticSearch->execute();
-			
-			$this->getLogger(__METHOD__)->error(
-				'Refurbed::afterExecute',
-				['msg'=>'received stuf', 'data'=>$resultList]);
-			
-			if(count($resultList['error']) > 0) {
-				$this->getLogger(__METHOD__)->error(
-					'Refurbed::item.occurredElasticSearchErrors',
-					['Error message' => $resultList['error']]);
-				break;
-			}
-
-			if(!is_array($resultList['documents'])
-				|| count($resultList['documents']) == 0) {
-				
-				$this->getLogger(__METHOD__)->error(
-					'Refurbed::404',
-					['msg' => 'no documents returned']);
-				break;
-			}
 		
-			foreach($resultList['documents'] as $result) {
-				$this->buildRow($settings, $result);
-			}
-			//$this->constructData($settings, $result);
-			// Pass the items to the CSV printer
-		} while ($elasticSearch->hasNext());
-	}
-
-
-	/**
-	 * Creates the item row and prints it into the CSV file.
-	 *
-	 * @param KeyValue $settings
-	 * @param array $variation
-	 */
-	private function buildRow(KeyValue $settings, $variation) {
-		$this->getLogger(__METHOD__)->debug(
-			'Refurbed::item.itemExportConstructGroup',
-			['Data row duration' => 'Row printing start']);
+		$this->setDelimiter(self::DELIMITER);
+		$this->addCSVContent(array('sku', 'name', 'price', 'stock'));
 		
-		$data = [
-			'sku' => $variation['sku'],
-			'name' => $variation['name'],
-			'price' => $variation['price'],
-			'stock' => $variation['stock'],
-		];
-		$this->addCSVContent(array_values($data));
-	}
-	
-	private function head():array
-	{
-		return array('sku', 'name', 'price', 'stock');
+		
+		foreach($resultData as $item) {
+			$data = [
+				'sku' => $item->itemBase->id,
+				'name' => 'bla',
+				'price' => 100.00,
+				'stock' => $item->variationStock->stockNet,
+			];
+			$this->addCSVContent(array_values($data));
+		}
 	}
 }
