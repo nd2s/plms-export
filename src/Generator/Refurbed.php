@@ -55,7 +55,7 @@ class Refurbed extends CSVGenerator
 			
 			$data = [
 				'refurbed_sku' => $record->itemBase->id,
-				'stock_net' => empty($stockNet) ? 0 : $stockNet,
+				'stock_net' => $stockNet ?: 0,
 				'currency' => $currency,
 				'price_gross' => $priceGross,
 				'vat' => $vat,
