@@ -8,6 +8,7 @@ use Plenty\Modules\Helper\Models\KeyValue;
 use Plenty\Modules\Item\DataLayer\Models\Record;
 use Plenty\Modules\Item\DataLayer\Models\RecordList;
 use Plenty\Modules\DataExchange\Models\FormatSetting;
+use Plenty\Plugin\Log\Loggable;
 
 class Refurbed extends CSVGenerator
 {
