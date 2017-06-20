@@ -29,7 +29,7 @@ class Refurbed extends ResultFields
 		$fields = [
 			[
 				'item.id',
-				'skus.sku',
+				//'skus.sku',
 				
 				// Variation.
 				'id',
