@@ -27,6 +27,16 @@ class Refurbed extends ResultFields
 		$this->setOrderByList(['item.id', ElasticSearch::SORTING_ORDER_ASC]);
 
 		$fields = [
+			'itemBase' => ['id'],
+			'variationBase' => ['unitId', 'content'],
+			'variationStock' => [
+				'params' => [
+					'type' => 'virtual',
+				],
+				'fields' => ['stockNet']
+			]
+		];
+		/*[
 			[
 				'item.id',
 				//'skus.sku',
@@ -35,7 +45,7 @@ class Refurbed extends ResultFields
 				'id',
 			],
 			[],
-		];
+		];*/
 		return $fields;
 	}
 }
