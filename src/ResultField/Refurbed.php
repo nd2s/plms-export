@@ -29,7 +29,7 @@ class Refurbed extends ResultFields
 				'fields' => [
 					'currency',
 					'price',
-					'priceNet'
+					'vatValue'
 				],
 			],
 			'variationStock' => [

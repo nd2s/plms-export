@@ -51,14 +51,14 @@ class Refurbed extends CSVGenerator
 			$stockNet = $record->variationStock->stockNet;
 			$currency = $record->variationRetailPrice->currency;
 			$priceGross = $record->variationRetailPrice->price;
-			$priceNet = $record->variationRetailPrice->priceNet;
+			$vat = $record->variationRetailPrice->vatValue;
 			
 			$data = [
 				'refurbed_sku' => $record->itemBase->id,
 				'stock_net' => $stockNet,
 				'currency' => $currency,
 				'price_gross' => $priceGross,
-				'price_net' => $priceNet,
+				'vat' => $vat,
 			];
 			$this->addCSVContent(array_values($data));
 		}
