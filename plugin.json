@@ -22,5 +22,5 @@
 	"dependencies": {
 		"ElasticExport": ">=1.0.15"
 	},
-	"isClosedSource": true
+	"isClosedSource": false
 }
