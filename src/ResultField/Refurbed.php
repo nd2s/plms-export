@@ -18,10 +18,6 @@ class Refurbed extends ResultFields
 	public function generateResultFields(array $formatSettings = []):array
 	{
 		$settings = $this->arrayHelper->buildMapFromObjectList($formatSettings, 'key', 'value');
-
-		//$reference = $settings->get('referrerId') ? $settings->get('referrerId') : self::IDEALO_DE;
-		//$this->setOrderByList(['item.id', ElasticSearch::SORTING_ORDER_ASC]);
-
 		$fields = [
 			'itemBase' => ['id'],
 			'variationBase' => ['unitId', 'content'],
