@@ -49,7 +49,7 @@ class Refurbed extends CSVGenerator
 		]);
 		
 		foreach($resultData as $record) {
-			$intlId = $record->itemBase->id.'-'.$record->variationBase->unitId;
+			$intlId = $record->itemBase->id.'-'.$record->variationBase->id;
 			$stockNet = $record->variationStock->stockNet;
 			$currency = $record->variationRetailPrice->currency;
 			$priceGross = $record->variationRetailPrice->price;

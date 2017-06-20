@@ -20,7 +20,7 @@ class Refurbed extends ResultFields
 		$settings = $this->arrayHelper->buildMapFromObjectList($formatSettings, 'key', 'value');
 		$fields = [
 			'itemBase' => ['id'],
-			'variationBase' => ['unitId', 'content'],
+			'variationBase' => ['id', 'content'],
 			'variationRetailPrice' => [
 				'fields' => [
 					'currency',
