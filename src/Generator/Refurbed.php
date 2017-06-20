@@ -1,4 +1,5 @@
 <?php
+
 namespace Refurbed\Generator;
 
 use ElasticExport\Helper\ElasticExportHelper;
@@ -13,8 +14,6 @@ use Plenty\Plugin\Log\Loggable;
 class Refurbed extends CSVGenerator
 {
 	use Loggable;
-
-	const DELIMITER = ";";
 
 	private $elasticExportHelper;
 	
@@ -39,16 +38,15 @@ class Refurbed extends CSVGenerator
 			return;
 		}
 		
-		$this->setDelimiter(self::DELIMITER);
+		$this->setDelimiter(';');
 		$this->addCSVContent(array('sku', 'name', 'price', 'stock'));
-		
 		
 		foreach($resultData as $item) {
 			$data = [
 				'sku' => $item->itemBase->id,
 				'name' => 'bla',
 				'price' => 100.00,
-				'stock' => $item->variationStock->stockNet,
+				'stock' => $item->variationStock->stockNet
 			];
 			$this->addCSVContent(array_values($data));
 		}
