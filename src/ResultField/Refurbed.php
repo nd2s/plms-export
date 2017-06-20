@@ -25,6 +25,13 @@ class Refurbed extends ResultFields
 		$fields = [
 			'itemBase' => ['id'],
 			'variationBase' => ['unitId', 'content'],
+			'variationRetailPrice' => [
+				'fields' => [
+					'currency',
+					'price',
+					'priceNet'
+				],
+			],
 			'variationStock' => [
 				'params' => [
 					'type' => 'virtual',

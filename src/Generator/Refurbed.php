@@ -39,14 +39,26 @@ class Refurbed extends CSVGenerator
 		}
 		
 		$this->setDelimiter(';');
-		$this->addCSVContent(array('sku', 'name', 'price', 'stock'));
+		$this->addCSVContent([
+			'refurbed_sku',
+			'stock_net',
+			'currency',
+			'price_gross',
+			'vat'
+		));
 		
-		foreach($resultData as $item) {
+		foreach($resultData as $record) {
+			$stockNet = $record->variationStock->stockNet;
+			$currency = $record->variationRetailPrice->currency;
+			$priceGross = $record->variationRetailPrice->price;
+			$priceNet = $record->variationRetailPrice->priceNet;
+			
 			$data = [
-				'sku' => $item->itemBase->id,
-				'name' => 'bla',
-				'price' => 100.00,
-				'stock' => $item->variationStock->stockNet
+				'refurbed_sku' => $record->itemBase->id,
+				'stock_net' => $stockNet,
+				'currency' => $currency,
+				'price_gross' => $priceGross,
+				'price_net' => $priceNet,
 			];
 			$this->addCSVContent(array_values($data));
 		}
