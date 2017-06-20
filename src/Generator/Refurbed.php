@@ -45,7 +45,8 @@ class Refurbed extends CSVGenerator
 			'stock_net',
 			'currency',
 			'price_gross',
-			'vat'
+			'vat',
+			'url'
 		]);
 		
 		foreach($resultData as $record) {
@@ -54,7 +55,8 @@ class Refurbed extends CSVGenerator
 			$currency = $record->variationRetailPrice->currency;
 			$priceGross = $record->variationRetailPrice->price;
 			$vat = $record->variationRetailPrice->vatValue;
-			
+			$url = $record->itemDescription->urlContent;
+	
 			$data = [
 				'refurbed_id' => $intlId,
 				'internal_id' => $intlId,
@@ -62,6 +64,7 @@ class Refurbed extends CSVGenerator
 				'currency' => $currency,
 				'price_gross' => $priceGross,
 				'vat' => $vat,
+				'url' => $url
 			];
 			$this->addCSVContent(array_values($data));
 		}

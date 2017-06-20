@@ -18,8 +18,16 @@ class Refurbed extends ResultFields
 	public function generateResultFields(array $formatSettings = []):array
 	{
 		$settings = $this->arrayHelper->buildMapFromObjectList($formatSettings, 'key', 'value');
+		$lang = $settings->get('lang') ?: 'de',
+	
 		$fields = [
 			'itemBase' => ['id'],
+			'itemDescription' => [
+				'params' => [
+					'language' => $lang
+				],
+				'fields' => ['urlContent']
+			],
 			'variationBase' => ['id', 'content'],
 			'variationRetailPrice' => [
 				'fields' => [
