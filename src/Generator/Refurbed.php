@@ -38,7 +38,7 @@ class Refurbed extends CSVGenerator
 			return;
 		}
 		
-		$this->setDelimiter(';');
+		$this->setDelimiter(',');
 		$this->addCSVContent([
 			'sku',
 			'internal_id',
