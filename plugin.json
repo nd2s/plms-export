@@ -14,13 +14,13 @@
 	"categories": [
 		"3523"
 	],
-	"version": "0.1.10",
+	"version": "0.1.11",
 	"marketplaceName": {
 		"de":"refurbed",
 		"en":"refurbed"
 	},
 	"dependencies": {
-		"ElasticExport": ">=1.1"
+		"ElasticExport": ">=1.0.15"
 	},
 	"isClosedSource": false
 }
