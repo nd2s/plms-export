@@ -45,7 +45,7 @@ class Refurbed extends CSVGenerator
 			'currency',
 			'price_gross',
 			'vat'
-		));
+		]);
 		
 		foreach($resultData as $record) {
 			$stockNet = $record->variationStock->stockNet;
