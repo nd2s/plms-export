@@ -62,7 +62,7 @@ class Refurbed extends CSVGenerator
 	
 			$data = [
 				//'sku' => $intlId,
-				'internal_id' => $intlId,
+				'internal_sku' => $intlSku,
 				'stock_net' => $stockNet ?: 0,
 				'currency' => $currency,
 				'price_gross' => $priceGross,
