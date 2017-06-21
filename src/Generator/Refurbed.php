@@ -39,9 +39,11 @@ class Refurbed extends CSVGenerator
 		}
 		
 		$this->setDelimiter(',');
+
+		// Refurbed SKU not important now - don't add it to the output.
 		$this->addCSVContent([
-			'sku',
-			'internal_id',
+			//'sku',
+			'internal_sku',
 			'stock_net',
 			'currency',
 			'price_gross',
@@ -49,7 +51,9 @@ class Refurbed extends CSVGenerator
 		]);
 		
 		foreach($resultData as $record) {
-			$intlId = $record->itemBase->id.'-'.$record->variationBase->id;
+			// Each variation gets a globally unique id we call
+			// internal SKU.
+			$intlSku = $record->itemBase->id.'-'.$record->variationBase->id;
 			$stockNet = $record->variationStock->stockNet;
 			$currency = $record->variationRetailPrice->currency;
 			$priceGross = $record->variationRetailPrice->price;
@@ -57,7 +61,7 @@ class Refurbed extends CSVGenerator
 			//$url = $record->itemDescription->urlContent;
 	
 			$data = [
-				'sku' => $intlId,
+				//'sku' => $intlId,
 				'internal_id' => $intlId,
 				'stock_net' => $stockNet ?: 0,
 				'currency' => $currency,
