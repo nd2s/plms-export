@@ -2,7 +2,6 @@
 
 namespace Refurbed\Generator;
 
-use ElasticExport\Helper\ElasticExportHelper;
 use Plenty\Modules\DataExchange\Contracts\CSVGenerator;
 use Plenty\Modules\Helper\Services\ArrayHelper;
 use Plenty\Modules\Helper\Models\KeyValue;
@@ -15,17 +14,13 @@ class Refurbed extends CSVGenerator
 {
 	use Loggable;
 
-	private $elasticExportHelper;
-	
 	private $arrayHelper;
 
 	private $defaultShippingList = [];
 
 
-	public function __construct(ElasticExportHelper $elasticExportHelper,
-		ArrayHelper $arrayHelper)
+	public function __construct(ArrayHelper $arrayHelper)
 	{
-		$this->elasticExportHelper = $elasticExportHelper;
 		$this->arrayHelper = $arrayHelper;
 	}
 

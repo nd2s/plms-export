@@ -20,7 +20,6 @@
 		"en":"refurbed"
 	},
 	"dependencies": {
-		"ElasticExport": ">=1.1"
 	},
 	"isClosedSource": false
 }
