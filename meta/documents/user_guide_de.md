@@ -11,6 +11,7 @@ Installieren Sie das Plugin und legen Sie einen Elastischen Export mit folgenden
 | Feld               | Anweisung     |
 | ------------------:| ------------- |
 | **Name**           | frei wählbar, zum Beispiel `refurbed` |
+| **Typ**            | `Artikel`                             |
 | **Format**         | `refurbed`                            |
 | **Limit**          | `9999`                                |
 | **Bereitstellung** | `URL`                                 |
